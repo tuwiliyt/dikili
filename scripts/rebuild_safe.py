@@ -5,7 +5,7 @@ import re
 import os
 os.system('python3 parse_sairs.py')
 
-with open('/content/dikili/app/dikili_final.json', 'r', encoding='utf-8') as f:
+with open('/content/dikili/repo/dikili_final.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # 1. Fix Arabic Reversals
@@ -132,6 +132,6 @@ for sair in data['sairs']:
             
     sair['blocks'] = merged_blocks
 
-with open('/content/dikili/app/dikili_final.json', 'w', encoding='utf-8') as f:
+with open('/content/dikili/repo/dikili_final.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 

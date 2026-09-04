@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <text y='.9em' font-size='90'>📜</text></svg>">
-
+<head>\n    <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Naskah Dikili Gorontalo</title>
@@ -242,6 +239,22 @@
             text-align: right;
         }
 
+    
+        .badge-jabu {
+            display: inline-block;
+            background-color: rgba(234, 179, 8, 0.15);
+            color: #eab308;
+            border: 1px solid #ca8a04;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+            margin: 0 4px;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        }
+
     </style>
 </head>
 <body>
@@ -328,7 +341,13 @@
         text = text.replace(/^\d+\s*$/, '');
         if (!text) return;
 
+        
+        // Highlight Jabu markers
+        text = text.replace(/\(Jābu\)\.?/gi, '<span class="badge-jabu">Jābu</span>');
+        text = text.replace(/\(jābu\)\.?/gi, '<span class="badge-jabu">Jābu</span>');
+        
         let cssClass = 'block-text';
+
         if (b.type === 'arabic') cssClass = 'block-arabic';
         if (b.type === 'transliteration') cssClass = 'block-transliteration';
         if (b.type === 'translation') cssClass = 'block-translation';

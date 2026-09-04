@@ -42,7 +42,7 @@ def fix_line(line):
     return ''.join(fixed)
 
 def main():
-    with open('/content/dikili/app/dikili_final.json', 'r', encoding='utf-8') as f:
+    with open('/content/dikili/repo/dikili_final.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     changes = 0
@@ -59,7 +59,7 @@ def main():
 
     print(f'Fixed {changes} reversed Arabic lines.')
     
-    with open('/content/dikili/app/dikili_final.json', 'w', encoding='utf-8') as f:
+    with open('/content/dikili/repo/dikili_final.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 if __name__ == '__main__':

@@ -312,7 +312,7 @@ def main():
         "kearifan_lokal": build_kearifan()
     }
     
-    output = '/content/dikili/app/dikili_final.json'
+    output = '/content/dikili/repo/dikili_final.json'
     with open(output, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     

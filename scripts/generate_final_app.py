@@ -8,7 +8,7 @@ and removes all references to PDF/book page numbers.
 import json
 
 def main():
-    with open('/content/dikili/app/dikili_final.json', 'r', encoding='utf-8') as f:
+    with open('/content/dikili/repo/dikili_final.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
     
     json_str = json.dumps(data, ensure_ascii=False)
@@ -255,6 +255,22 @@ def main():
             text-align: right;
         }
 
+    
+        .badge-jabu {
+            display: inline-block;
+            background-color: rgba(234, 179, 8, 0.15);
+            color: #eab308;
+            border: 1px solid #ca8a04;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+            margin: 0 4px;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        }
+
     </style>
 </head>
 <body>
@@ -341,7 +357,13 @@ def main():
         text = text.replace(/^\d+\s*$/, '');
         if (!text) return;
 
+        
+        // Highlight Jabu markers
+        text = text.replace(/\(Jābu\)\.?/gi, '<span class="badge-jabu">Jābu</span>');
+        text = text.replace(/\(jābu\)\.?/gi, '<span class="badge-jabu">Jābu</span>');
+        
         let cssClass = 'block-text';
+
         if (b.type === 'arabic') cssClass = 'block-arabic';
         if (b.type === 'transliteration') cssClass = 'block-transliteration';
         if (b.type === 'translation') cssClass = 'block-translation';
@@ -453,7 +475,7 @@ def main():
     
     final_html = template.replace('/*__DATA__*/null', json_str)
     
-    output_path = '/content/dikili/app/index.html'
+    output_path = '/content/dikili/repo/index.html'
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(final_html)
     print(f"Generated {output_path}")
